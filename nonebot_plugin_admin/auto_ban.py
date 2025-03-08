@@ -70,7 +70,6 @@ def check_msg(text: str, gid: int) -> Tuple[bool, bool, str]:
             if not re.search(rule[0], text): continue
         except Exception:
             if text.find(rule[0]) == -1: continue
-        print(rule)
         return delete, ban, rule[0]
     return False, False, None
 
