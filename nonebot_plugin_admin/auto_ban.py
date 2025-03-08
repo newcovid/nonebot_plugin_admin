@@ -102,7 +102,7 @@ async def _(bot: Bot, event: GroupMessageEvent, matcher: Matcher, msg: str = Dep
         except ActionFailed:
             logger.info('消息撤回失败')
     if ban:
-        level = await get_user_violation(gid, uid, rule, event.raw_message)
+        level = await get_user_violation(gid, uid, f"敏感词: {rule}", event.raw_message)
         mute_lst = mute_sb(bot, gid, lst=[uid], scope=time_scop_map[level])
         async for mute in mute_lst:
             if not mute:
